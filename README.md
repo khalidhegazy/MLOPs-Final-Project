@@ -1,47 +1,48 @@
-# ML Course Final Project - Gesture Control Game
+Maze Game Frontend
+This repository contains the frontend code for the hand-gesture-controlled maze game, along with integration points to the backend API.
 
-This project implements a gesture-controlled game using machine learning for gesture recognition. Players can control the game using hand gestures captured through their webcam.
+Project Overview
+The frontend is a lightweight web application responsible for rendering the maze and interpreting navigation commands received from the backend API, which predicts maze movements based on real-time hand landmark detection and machine learning.
 
-## 🚀 Quick Start
+Frontend & Backend Integration
+Frontend renders the maze and captures user inputs.
 
-1. Install the Live Server extension in VS Code:
-   - Open VS Code
-   - Go to Extensions (Ctrl+Shift+X)
-   - Search for "Live Server"
-   - Install the extension by Ritwick Dey
+Backend runs a FastAPI server that processes hand landmarks using ML models and returns predicted maze actions.
 
-2. Launch the project:
-   - Right-click on `index.html`
-   - Select "Open with Live Server"
-   - The game should open in your default browser at `http://localhost:5500`
+Link Between Frontend and Backend:
+The file api-call.js handles all communication with the backend API. It sends landmark data to the backend /predict endpoint and receives navigation commands such as "up", "down", "left", or "right" to control the maze accordingly.
 
-## 📁 Project Structure
+Files and Description
+File Name	Description
+index.html	Main HTML page for the maze game UI
+maze.js	Core maze logic and rendering
+keyboard.js	Keyboard event handling for local control
+api-call.js	Handles API requests/responses to backend
+mp.js	MediaPipe or helper JS (if used)
+jquery.js	jQuery library for DOM manipulation
+Box2dWeb.min.js	Box2D physics engine for maze dynamics
+ball.png	Maze ball sprite
+brick.png	Brick texture for maze walls
+concrete.png	Concrete texture background
+License.md	License information
 
-- `index.html` - Main game interface
-- `api-call.js` - ML model API integration
-- `cam.js` - Webcam handling and gesture processing
-- `keyboard.js` - Keyboard controls implementation
-- `maze.js` - Maze game logic
-- `mp.js` - Media processing utilities
+Branch Structure
+master: Contains the complete frontend code.
 
-## 🔧 Important Implementation Note
+backend(branch) : Contains the backend code including FastAPI server, ML models, and monitoring, integrated or linked with the frontend.
 
-In `api-call.js`, there is a TODO section that needs to be implemented:
+How to Run Locally
+Start the backend API server (FastAPI app) and ensure it is running on http://localhost:8000.
 
-```javascript
-// TODO: Call your model's api here
-// and return the predicted label
-// Possible labels: "up", "down", "left", "right", null
-// null means stop & wait for the next gesture
-```
+Open index.html in a modern web browser.
 
-You need to replace the current random label generation with your actual ML model API call. The function should:
-- Take the processed tensor (`processed_t`) as input
-- Call your deployed ML model's API
-- Return one of these labels: "up", "down", "left", "right", or null
+The frontend captures hand landmarks, sends them via api-call.js to the backend, receives maze navigation commands, and updates the maze in real-time.
 
-## 🎮 Controls
+Demo Video
+![Maze_using_hand_signs](https://github.com/user-attachments/assets/29b236fe-47cd-4df0-acc8-39e1f5a23e14)
 
-The game can be controlled through:
-- Hand gestures (via webcam)
-- Keyboard arrows (as fallback)
+
+
+
+Author
+Eng. Khalid Ahmed Mohamed
